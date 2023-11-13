@@ -8,15 +8,11 @@ import Home from './page/Home';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout/>,
+    element: <Home/>,
     children: [
       {
         path: "home",
         element: <Home />,
-      },
-      {
-        path: "about",
-        // element: <About />,
       },
     ],
   },
