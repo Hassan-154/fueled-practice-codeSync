@@ -18,13 +18,6 @@ function DropDown() {
     const updatedInputs = duplicateInput.filter((item) => item.id !== id);
     setDuplicateInput(updatedInputs);
   };
-
-  useEffect(() => {
-    if (duplicateInput.length === 0) {
-      createDuplicate();
-    }
-  }, []);
-
   return (
     <div>
       <ul>

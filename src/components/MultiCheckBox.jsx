@@ -5,7 +5,7 @@ import Input from './Input';
 
 function DropDown() {
   const shouldShowImage = true;
-  const [duplicateInput, setDuplicateInput] = useState([{ id: 0 }]);
+  const [duplicateInput, setDuplicateInput] = useState([{id: 0 }]);
   const [idCounter, setIdCounter] = useState(1);
 
   const createDuplicate = () => {
@@ -19,11 +19,6 @@ function DropDown() {
     setDuplicateInput(updatedInputs);
   };
 
-  useEffect(() => {
-    if (duplicateInput.length === 0) {
-      createDuplicate();
-    }
-  }, []);
 
   return (
     <div>

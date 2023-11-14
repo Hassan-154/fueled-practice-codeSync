@@ -24,12 +24,6 @@ function Home() {
     setDuplicateInput(updatedInputs);
   };
 
-  useEffect(() => {
-    if (duplicateInput.length === 0) {
-      createDuplicate();
-    }
-  }, []);
-
   return (
     <div className='max-w-2xl mx-auto'>
    <ul>
