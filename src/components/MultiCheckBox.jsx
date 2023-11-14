@@ -4,25 +4,23 @@ import CrossIcon from './CrossIcon';
 import Input from './Input';
 function MultiCheckBox() {
     const shouldShowImage = true;
-    const [duplicateInput, setDuplicateInput] = useState([{ id: 0 }]);
+    const [duplicateInput, setDuplicateInput] = useState([0]);
     
       const createDuplicate = () => {
-        const newId = duplicateInput.length; // Incremental ID
-        setDuplicateInput([...duplicateInput, { id: newId }]); 
-        console.log("Newly added ID:", newId);
+        setDuplicateInput([...duplicateInput, {}]); 
       };
-
+      console.log(duplicateInput)
   return (
-    <div>
-    <ul>
-      {duplicateInput.map((item, id) => (
-        <li key={id}>
-        <div className='flex items-center gap-4 mt-3.5'><input type='checkbox' className='h-5 w-5 cursor-pointer'/><Input placeholder={ id+1 +' Option'}/><CrossIcon/></div>
-        </li>
-      ))}
-    </ul>
-    <div onClick={createDuplicate}><Button customClass={'mt-5'} showImage={shouldShowImage}>ADD OPTION</Button></div>
-  </div>
+     <div>
+      <ul>
+        {duplicateInput.map((item, id) => (
+          <li key={id}>
+          <div className='flex items-center gap-4 mt-3.5'><input type='checkbox' className='h-5 w-5 cursor-pointer'/><Input placeholder={ id+1 +' Option'}/><CrossIcon/></div>
+          </li>
+        ))}
+      </ul>
+      <div onClick={createDuplicate}><Button customClass={'mt-5'} showImage={shouldShowImage}>ADD OPTION</Button></div>
+    </div>
   )
 }
 

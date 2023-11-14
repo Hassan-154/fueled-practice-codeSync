@@ -8,14 +8,8 @@ import Home from './page/Home';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout/>,
-    children: [
-      {
-        path: "home",
-        element: <Home />,
-      },
-    ],
-  },
+    element: <Layout/>
+  }
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
