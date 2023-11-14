@@ -1,27 +1,48 @@
-import React,{useState} from 'react'
+import React, { useState, useEffect } from 'react';
 import Button from './Button';
 import CrossIcon from './CrossIcon';
 import Input from './Input';
+
 function DropDown() {
-    const shouldShowImage = true;
-    const [duplicateInput, setDuplicateInput] = useState([0]);
-    
-      const createDuplicate = () => {
-        setDuplicateInput([...duplicateInput, {}]); 
-      };
-      
+  const shouldShowImage = true;
+  const [duplicateInput, setDuplicateInput] = useState([{ id: 0 }]);
+  const [idCounter, setIdCounter] = useState(1);
+
+  const createDuplicate = () => {
+    const trackId = idCounter;
+    setDuplicateInput([...duplicateInput, { id: trackId }]);
+    setIdCounter(idCounter + 1);
+  };
+
+  const deleteDuplicateItem = (id) => {
+    const updatedInputs = duplicateInput.filter((item) => item.id !== id);
+    setDuplicateInput(updatedInputs);
+  };
+
+  useEffect(() => {
+    if (duplicateInput.length === 0) {
+      createDuplicate();
+    }
+  }, []);
+
   return (
-     <div>
+    <div>
       <ul>
-        {duplicateInput.map((item, id) => (
-          <li key={id}>
-          <div className='flex items-center gap-4 mt-3.5'><div className='text-lg'>{id+1}.</div><Input placeholder={ id+1 +' Option'}/><CrossIcon/></div>
+        {duplicateInput.map((item, index) => (
+          <li key={item.id}>
+            <div className='flex items-center gap-4 mt-3.5'>
+              <div className='text-lg'>{index + 1}.</div>
+              <Input placeholder={index + 1 + ' Option'} />
+              <div onClick={() => deleteDuplicateItem(item.id)}><CrossIcon/></div>
+            </div>
           </li>
         ))}
       </ul>
-      <div onClick={createDuplicate}><Button customClass={'mt-5'} showImage={shouldShowImage} name='ADD OPTION'/></div>
+      <div onClick={createDuplicate}>
+        <Button customClass={'mt-5'} showImage={shouldShowImage} name='ADD OPTION' />
+      </div>
     </div>
-  )
+  );
 }
 
-export default DropDown
+export default DropDown;

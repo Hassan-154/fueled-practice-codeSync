@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import Input from '../components/Input'
 import MenuSelector from '../components/MenuSelector'
 import Button from '../components/Button';
@@ -10,16 +10,31 @@ function Home() {
   const shouldShowImage = true;
   const menuItems = ['Dropdown', 'Short Answer', 'Paragraph', 'Checkboxes', 'Multiple Choice'];
 
-  const [duplicateInput, setDuplicateInput] = useState([0])
-      const createDuplicate = () => {
-        setDuplicateInput([...duplicateInput, {}]); 
-      };
+  const [duplicateInput, setDuplicateInput] = useState([{ id: 0 }]);
+  const [idCounter, setIdCounter] = useState(1);
+
+  const createDuplicate = () => {
+    const trackId = idCounter;
+    setDuplicateInput([...duplicateInput, { id: trackId }]);
+    setIdCounter(idCounter + 1);
+  };
+
+  const deleteDuplicateItem = (id) => {
+    const updatedInputs = duplicateInput.filter((item) => item.id !== id);
+    setDuplicateInput(updatedInputs);
+  };
+
+  useEffect(() => {
+    if (duplicateInput.length === 0) {
+      createDuplicate();
+    }
+  }, []);
 
   return (
     <div className='max-w-2xl mx-auto'>
    <ul>
-   {duplicateInput.map((item, id) => (
-   <li key={id}>
+   {duplicateInput.map((item, index) => (
+   <li key={item.id}>
    <div className='p-5 mt-6 bg-white'>
     <h1 className='pb-0.5 font-semibold text-heading'>Question</h1>
     <Input placeholder='What do you want to ask?'></Input>
@@ -28,9 +43,9 @@ function Home() {
     <MenuSelector items={menuItems}/>
     <HorizontalLine/>
     <div className='flex item-center justify-between mt-5'>
-    <span>1 of 2</span>
+    <span>{index+1} of {duplicateInput.length}</span>
     <div className='flex items-center gap-5'>
-    <div><Arrow/></div><div className='rotate-180'><Arrow/></div><Bin/>
+    <div><Arrow/></div><div className='rotate-180'><Arrow/></div><div onClick={() => deleteDuplicateItem(item.id)}><Bin/></div>
     </div>
     </div>
     </div>
