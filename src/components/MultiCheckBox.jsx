@@ -9,7 +9,9 @@ function MultiCheckBox() {
       const createDuplicate = () => {
         setDuplicateInput([...duplicateInput, {}]); 
       };
-      console.log(duplicateInput)
+
+      
+
   return (
      <div>
       <ul>

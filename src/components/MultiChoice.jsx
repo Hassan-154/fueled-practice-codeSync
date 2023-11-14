@@ -2,14 +2,14 @@ import React,{useState} from 'react'
 import Button from './Button';
 import CrossIcon from './CrossIcon';
 import Input from './Input';
-function DropDown() {
+function MultiChoice() {
     const shouldShowImage = true;
     const [duplicateInput, setDuplicateInput] = useState([0]);
     
       const createDuplicate = () => {
         setDuplicateInput([...duplicateInput, {}]); 
       };
-      console.log(duplicateInput)
+      
   return (
      <div>
       <ul>
@@ -19,9 +19,9 @@ function DropDown() {
           </li>
         ))}
       </ul>
-      <div onClick={createDuplicate}><Button customClass={'mt-5'} showImage={shouldShowImage}>ADD OPTION</Button></div>
+      <div onClick={createDuplicate}><Button customClass={'mt-5'} showImage={shouldShowImage} name='Add Option'/></div>
     </div>
   )
 }
 
-export default DropDown
+export default MultiChoice

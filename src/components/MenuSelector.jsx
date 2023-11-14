@@ -21,7 +21,7 @@ const MenuSelector = (props) => {
   
   return (
     <div>
-      <div className="rounded-md max-w-menu flex justify-between items-center cursor-pointer p-input border border-input text-black text-dropDown" onClick={toggleMenu}>
+      <div className="rounded-md max-w-menu flex justify-between items-center cursor-pointer px-input py-menu border border-input text-black text-dropDown" onClick={toggleMenu}>
         <div>{selectedItem || 'Dropdown'}</div>
         <div><img src={icon}/></div>
       </div>
@@ -30,7 +30,7 @@ const MenuSelector = (props) => {
       props.items.map((item) => (
       <div key={item} className="cursor-pointer" onClick={() => handleItemClick(item)}>
       <ul>
-      <Button customClass={'rounded-md !font-normal mt-3.5'}>{item}</Button>
+      <Button customClass={'rounded-md !font-normal mt-3.5 !text-dropDown'} name={item} />
       </ul>
     </div>
       ))

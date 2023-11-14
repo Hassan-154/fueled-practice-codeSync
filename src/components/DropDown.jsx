@@ -9,7 +9,7 @@ function DropDown() {
       const createDuplicate = () => {
         setDuplicateInput([...duplicateInput, {}]); 
       };
-      console.log(duplicateInput)
+      
   return (
      <div>
       <ul>
@@ -19,7 +19,7 @@ function DropDown() {
           </li>
         ))}
       </ul>
-      <div onClick={createDuplicate}><Button customClass={'mt-5'} showImage={shouldShowImage}>ADD OPTION</Button></div>
+      <div onClick={createDuplicate}><Button customClass={'mt-5'} showImage={shouldShowImage} name='ADD OPTION'/></div>
     </div>
   )
 }
