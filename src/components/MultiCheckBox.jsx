@@ -4,10 +4,12 @@ import CrossIcon from './CrossIcon';
 import Input from './Input';
 function MultiCheckBox() {
     const shouldShowImage = true;
-    const [duplicateInput, setDuplicateInput] = useState([0]);
+    const [duplicateInput, setDuplicateInput] = useState([{ id: 0 }]);
     
       const createDuplicate = () => {
-        setDuplicateInput([...duplicateInput, {}]); 
+        const newId = duplicateInput.length; // Incremental ID
+        setDuplicateInput([...duplicateInput, { id: newId }]); 
+        console.log("Newly added ID:", newId);
       };
 
   return (

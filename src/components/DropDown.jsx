@@ -9,8 +9,7 @@ function DropDown() {
       const createDuplicate = () => {
         setDuplicateInput([...duplicateInput, {}]); 
       };
-
-
+      console.log(duplicateInput)
   return (
      <div>
       <ul>
